@@ -57,14 +57,14 @@
     <div class="container">
         <section class="one">
             <div class="box1"></div>
-            <input type="number" id="numInput" value="0" min="0" max="360" onkeydown="event.preventDefault()" >
+            <input type="number" id="numInput" value="0" min="-360" max="360" onkeydown="event.preventDefault()" >
             <p id="label1">0°</p>
-            <input type="range" min="0" max="360"value="0" id="in1">
+            <input type="range" min="-360" max="360"value="0" id="in1">
         </section>
         <section class="two">
             <div class="box2"></div>
             <p id="label2">0%</p>
-            <input type="range" min="0" max="100" value="0" id="in2">
+            <input type="range" min="-500" max="500" value="0" id="in2">
         </section>
         <section class="three">
             <div class="box3"></div>
@@ -125,12 +125,12 @@
         let label3 = document.getElementById("label3")
         
         in1.addEventListener("input", function() {
-            b1.style.borderRadius = in1.value + "%"
+            b1.style.transform = `translateX(${in1.value}px)`
             label1.textContent = in1.value + "%"
         })
         
         in2.addEventListener("input", function() {
-            b2.style.borderRadius = in2.value + "%"
+            b2.style.transform = `translate(${in2.value}px, ${in2.value}px)`
             label2.textContent = in2.value + "%"
         })
         
