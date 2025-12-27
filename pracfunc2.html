@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{
+            background-color: #282a2b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="first">
+            <h2>Getting average grade</h2><br>
+            <label for="number">Pre-mid term</label>
+            <input type="number" id="premid"><br>
+            <label for="number">Mid term</label>
+            <input type="number" id="midterm"><br>
+            <label for="number" >Pre-final term</label>
+            <input type="number" id="prefinal"><br>
+            <label for="number">Final</label>
+            <input type="number" id="final"><br>
+
+            <button id="submit">submit</button>
+            <h4 id="result"></h4>
+            <h4 id="remarks"></h4>
+        </div>
+    </div>
+    <script>
+        const PM = document.getElementById('premid');
+        const MT = document.getElementById('midterm');
+        const PF = document.getElementById('prefinal');
+        const FT = document.getElementById('final');
+        const submit = document.getElementById('submit');
+        const result = document.getElementById('result');
+        const remarks = document.getElementById('remarks');
+
+        function average(a, b, c, d){
+            return (a + b + c + d) / 4;
+        }
+
+        submit.addEventListener("click", function(){
+            const pm = Number(PM.value);
+            const mt = Number(MT.value)
+            const pf = Number(PF.value)
+            const ft = Number(FT.value)
+
+          let avg = average(pm, mt, pf, ft);
+          result.textContent = `Your average grade for this semester is ${avg.toFixed(2)}`;
+
+          if(avg >=75){
+            remarks.textContent =("Remarks: Passed!");
+            }else if(avg >=50){
+                remarks.textContent =("Remarks: Failed!");
+            }
+            else{
+                remarks.textContent =("Remarks: Dropped! GET OUT!!!!");
+            }
+           
+        })
+    </script>
+</body>
+</html>

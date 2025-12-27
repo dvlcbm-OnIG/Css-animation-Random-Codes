@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Text generator</h1>
+    <label for="">Enter text you want to generate</label>
+    <input type="text" id="textGen"><br>
+    <label for="">Enter Quantity</label>
+    <input type="number" id="quantity"><br>
+    <button id="submit">Submit</button>
+    <p id="ptag"></p>
+    
+    <script>
+       let textGen = document.getElementById('textGen');
+       let quantity = document.getElementById('quantity');
+       let submit = document.getElementById('submit');
+       let ptag = document.getElementById('ptag');
+       let count = 0
+       submit.addEventListener("click", function(){
+        let qntty = Number(quantity.value);
+        let text = textGen.value;
+
+        do{
+            count ++;
+            ptag.innerHTML += text+ count + "<br>" ;
+            qntty --;
+           
+        }while(qntty >0 );
+       })
+    </script>
+</body>
+</html>

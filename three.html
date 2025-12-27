@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #2e2b2b;
+        }
+    </style>
+</head>
+<body>
+    <Script>
+        function Circle(r){
+            return Math.PI * Math.pow(r, 2)
+        }
+        function Triangle(b, h){
+            return 0.5 * b * h
+        }
+        function Rectangle(l, b){
+            return l * b
+        }
+        function Square(s){
+            return s * s
+        }
+
+        let choice = Number(prompt("1.Solve for Circle\n2.Solve for Triangle\n3.Solve for Rectangle\n4.Solve for Square"))
+        
+        if (choice === 1){
+            let r = Number(prompt("Enter radius of circle"))
+            console.log("The are of circle is " + Circle(r).toFixed(2))
+        }else if (choice === 2){
+            let b = Number(prompt("Enter base of triangle"))
+            let h = Number(prompt("Enter height of triangle"))
+            console.log("The area of Triangle is " + Triangle(b, h).toFixed(2))
+        }else if (choice === 3){
+            let l = Number(prompt("Enter length of rectangle"))
+            let b = Number(prompt("Enter breadth of rectangle"))
+            console.log("The area of Rectangle is " + Rectangle(l, b).toFixed(2))
+        }else if (choice === 4){
+            let s = Number(prompt("Enter side of square"))
+            console.log("The area of Square is " + Square(s).toFixed(2))
+        }
+    </Script>
+</body>
+</html>

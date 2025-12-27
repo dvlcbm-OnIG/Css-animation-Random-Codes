@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Background Color</title>
+    <style>
+        body {
+            background-color: darkslategrey;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+        }
+        .container{
+            background-color: rgb(44, 43, 43);
+            height: 200%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 30px;
+        }
+        section{
+            background-color: #463b3b;
+            height: 500px;
+            width: 500px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        .box1,
+        .box2,
+        .box3,
+        .box4{
+            background-color: cyan;
+            height: 100px;
+            width: 100px;
+            margin-top: 80px;
+            box-shadow: white  0px 0px 10px 0px;
+    
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="one">
+            <div class="box1"></div>
+            <input type="number" id="numInput" value="0" min="0" max="360" onkeydown="event.preventDefault()" >
+            <p id="label1">0°</p>
+            <input type="range" min="0" max="360"value="0" id="in1">
+        </section>
+        <section class="two">
+            <div class="box2"></div>
+            <p id="label2">0%</p>
+            <input type="range" min="0" max="100" value="0" id="in2">
+        </section>
+        <section class="three">
+            <div class="box3"></div>
+            <p id="label3">0%</p>
+            <input type="range" min="0" max="100" value="0" id="in3">
+        </section>
+        <section class="four">
+            <h1>Border Box Radius</h1>
+            <div class="box4"></div>
+            <p id="label4">0% 0% 0% 0%</p>
+            <label for="">top-left</label>
+            <input type="range" min="0" max="100" value="0" id="in4">
+            <label for="">top-right</label>
+            <input type="range" min="0" max="100" value="0" id="in4.1">
+            <label for="">bottom-right</label>
+            <input type="range" min="0" max="100" value="0" id="in4.2">
+            <label for="">bottom-left</label>
+            <input type="range" min="0" max="100" value="0" id="in4.3">
+        </section>
+    </div>
+
+    <script>
+        let b1 = document.querySelector(".box1")
+        let b2 = document.querySelector(".box2")
+        let b3 = document.querySelector(".box3")
+        let b4 = document.querySelector(".box4")
+let numInput = document.getElementById("numInput")
+        let in1 = document.getElementById("in1")
+        let in2 = document.getElementById("in2")
+        let in3 = document.getElementById("in3")
+
+        let in4 = document.getElementById("in4")
+        let in4_1= document.getElementById("in4.1")
+        let in4_2 = document.getElementById("in4.2")
+        let in4_3 = document.getElementById("in4.3")
+
+        let label1 = document.getElementById("label1")
+        let label2 = document.getElementById("label2")
+        let label3 = document.getElementById("label3")
+        let label4 = document.getElementById("label4")
+    
+    
+
+
+        in1.addEventListener("input", function(){
+            numInput.value = in1.value
+            b1.style.transform = `rotate(${in1.value}deg)`
+            label1.textContent = in1.value + "°"
+            
+        })
+        numInput.addEventListener("input", function(){
+            in1.value = numInput.value
+            b1.style.transform = `rotate(${numInput.value}deg)`
+            label1.textContent = in1.value + "°"
+            
+        })
+        in2.addEventListener("input", function(){
+            b2.style.borderRadius = in2.value +"%"
+            label2.textContent = in2.value + "%"
+        })
+        in3.addEventListener("input", function(){
+            b3.style.borderRadius = in3.value +"%"
+            label3.textContent = in3.value + "%"
+        })
+
+
+        function updateBorderRadius() {
+    b4.style.borderTopLeftRadius = in4.value + "%"
+    b4.style.borderTopRightRadius = in4_1.value + "%"
+    b4.style.borderBottomRightRadius = in4_2.value + "%"
+    b4.style.borderBottomLeftRadius = in4_3.value + "%"
+
+    label4.textContent = `${in4.value}% ${in4_1.value}% ${in4_2.value}% ${in4_3.value}%`
+}
+
+// Attach same function to all 4 inputs
+in4.addEventListener("input", updateBorderRadius)
+in4_1.addEventListener("input", updateBorderRadius)
+in4_2.addEventListener("input", updateBorderRadius)
+in4_3.addEventListener("input", updateBorderRadius)
+    </script>
+</body>
+</html>

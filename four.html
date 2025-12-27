@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+        :root{
+  --yt-red: #FF0000;
+  --yt-white: #FFFFFF;
+  --yt-black: #0F0F0F;
+       
+  --yt-bg-dark: #0F0F0F;
+  --yt-bg-dark-2: #181818;
+  --yt-bg-dark-3: #212121;
+
+  --yt-bg-light: #FFFFFF;
+  --yt-bg-light-2: #F9F9F9;
+  --yt-bg-light-3: #F1F1F1;
+
+  --yt-text-primary-dark: #FFFFFF;
+  --yt-text-secondary-dark: #AAAAAA;
+  --yt-text-primary-light: #030303;
+  --yt-text-secondary-light: #606060;
+
+  --yt-gray-100: #F1F1F1;
+  --yt-gray-200: #E5E5E5;
+  --yt-gray-300: #D9D9D9;
+  --yt-gray-400: #AAAAAA;
+  --yt-gray-500: #606060;
+
+  --yt-blue: #3EA6FF;
+  --yt-green: #2BA640;
+  --yt-yellow: #FBC02D;
+
+  --yt-btn-hover: #272727;
+  --yt-btn-active: #3D3D3D;
+  --yt-icon-inactive: #909090;
+  --yt-icon-active: #FFFFFF;
+
+
+
+
+          
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: black;
+            font-family: 'Roboto', sans-serif;
+          
+        }
+        .menuContent{
+            position: fixed;
+            padding: 15px;
+            height: 100vh;
+            width: 250px;
+            background-color: var(--yt-bg-dark);
+            transform: translateX(-100%);
+            transition: transform 0.2s ease;
+            z-index: 1001;
+        }
+        .menuContent.show{
+            transform: translateX(0);
+            transition: transform 0.2s ease;
+        }
+        .menuContent .exit{
+           display: flex;
+           align-items: center;
+        }
+        .menuContent .exit i{
+            color: var(--yt-bg-light);
+            margin-left: 11px;
+            font-size: 1.2rem;
+        }
+        .menuContent .navMenu{
+            display: flex;
+            margin-bottom: 25px;
+        
+            
+        }
+        .menuContent .navMenu .logo{
+            height: 25px;
+            margin-left: 25px;
+        }
+        .menuContent .navMenu p{
+            margin-top: -0;
+            color: var(--yt-bg-light);
+        }
+        .menuContent article .MenuArticl{
+            width: 100%;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+        }
+        .menuContent article .MenuArticl i{
+            font-size: 1.2rem;
+            color: white;
+        }
+        .menuContent article .MenuArticl span{
+            color: white;
+            margin-left: 20px;
+        }
+        .menuContent article .MenuArticl:hover{
+            background-color: var(--yt-btn-hover);
+        }
+        .navMain{
+            background: rgba(16, 16, 16, 0.819);
+            backdrop-filter: blur(50px);
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            z-index: 1000;
+            top: 0;
+        }
+        .navMain .left{
+            display: flex;
+            align-items: center;
+          
+        }
+        .navMain .brand{
+            align-items: center;
+            display: flex;
+        }
+        .navMain .left i{
+            font-size: 1.2rem;
+            color: var(--yt-bg-light);
+        }
+        .navMain .left .logo{
+            height: 25px;
+            margin-left: 30px;
+        }
+        .navMain .left span{
+            align-items: center;
+            letter-spacing: -1px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .navMain .left a{
+            text-decoration: none;
+            color: var(--yt-bg-light);
+        }
+        .navMain .right a{
+            text-decoration: none;
+            color: var(--yt-bg-light);
+            margin-left: 15px;
+            font-size: 1.2rem;
+          
+        }
+        .navMain .right a:nth-child(4){
+            border: 1px solid var(--yt-btn-active);
+            border-radius: 50px;
+            padding: 8px 12px;
+
+        }
+        .navMain .right a:nth-child(4):hover{
+            background-color: var(--yt-btn-active);
+        }
+        .navMain .right span{
+            margin-left: 5px;
+        }
+
+        #hero{
+            padding: 20px;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            height: 800px;
+        }
+        #hero .top{
+           
+            width: 40%;
+        }
+        #hero .top video{
+            height: 250px;
+            width: 250px;
+        }
+        #hero .bottom{
+           
+            height: 100%;
+            width: 60%;
+        }
+        #skills{
+            background-color: #35f;
+            height: 800px;
+        }
+        #friends{
+            background-color: #f56;
+            height: 800px;
+        }
+        #contact{
+            background-color: #355;
+            height: 800px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="menuContent" id="menuContent">
+        <nav class="navMenu">
+            <a class="exit" ><i class="fa-solid fa-bars" id="exitCont"><!-- Exit Menu --></i></a>
+            <a href="https://www.youtube.com/"><img src="images\ytLogo.png" alt="YouTube logo" class="logo"></a>
+        </nav>
+        <article>
+            <div class="MenuArticl"><i class="fa-solid fa-house" style="color: white;"></i><span>Home</span></div>
+            <div class="MenuArticl"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Youtube_shorts_icon.svg/1649px-Youtube_shorts_icon.svg.png" alt="YouTube Shorts" class="shorts-logo" style="width: 20px; height: auto;"><span>Shorts</span>
+            </div>
+            <div class="MenuArticl"><i class="fa-brands fa-youtube"></i><span>Subscriptions</span></div>
+            <div class="MenuArticl"><i class="fa-solid fa-circle-user"></i><span>You</span>
+            </div>
+            <div class="MenuArticl"><i class="fa-etch fa-solid fa-arrow-rotate-right" ></i><span>History</span></div>
+            <hr>
+        </article>
+    </div>
+    <nav class="navMain">
+        <div class="left">
+            <i class="fa-solid fa-bars" id="menuBar"></i>
+          
+            <a href="/" class="brand">
+              <a href="https://www.youtube.com/"><img src="images\ytLogo.png" alt="YouTube logo" class="logo"></a>
+             <!--<span class="brand-text">YouTube</span>-->
+            </a>
+          </div>
+          
+        <div class="right">
+            <a href="search"><i class="fa-solid fa-magnifying-glass" class="nav-link"></i></a>
+            <a href="#mic"><i class="fa-solid fa-microphone" class="nav-link"></i></a>
+            <a href="#threedots"><i class="fa-solid fa-ellipsis-vertical" class="nav-link"></i></a>
+            <a href="https://accounts.google.com"><i class="fa-solid fa-circle-user" class="nav-link"></i><span>Sign in</span></a>
+        </div>
+    </nav>
+    <main>
+        <!-- Hero/Home -->
+        <section id="hero">
+            <div class="top"><video src="images\navphoto.mp4" autoplay></video></div>
+            <div class="bottom">
+                <span><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptatibus accusamus voluptatum quam labore sint explicabo et ea, id qui, corporis sunt velit error vero ipsum quod temporibus deleniti odio.</p></span>
+            </div>
+        </section >
+        <!-- Skills -->
+        <section id="skills"></section>
+        <!-- Friends -->
+        <section id="friends"></section>
+        <!-- Contact -->
+        <section id="contact"></section>
+    </main>
+
+    <script>
+        const menuBar = document.getElementById("menuBar")
+        const menuCont = document.getElementById("menuContent")
+        const exitCont = document.getElementById("exitCont")
+
+
+        menuBar.addEventListener("click", function(){
+            menuCont.classList.add("show");
+        })
+        exitCont.addEventListener("click", function(){
+            menuCont.classList.remove("show")
+        })
+
+    </script>
+</body>
+</html>

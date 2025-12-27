@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falling Objects</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #282c34;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: sans-serif;
+  }
+  h1{
+    opacity: 5%;
+  }
+  .falling-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* objects won't block clicks */
+  }
+
+  .falling-object {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: 99999999;
+  }
+
+  @keyframes fall {
+    0% {
+      top: -50px;
+      transform: translateX(0) rotate(0deg);
+    }
+    100% {
+      top: 100vh;
+      transform: translateX(0px) rotate(360deg);
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Falling Objects Demo</h1>
+<div class="falling-container" id="falling-container"></div>
+
+<script>
+  const container = document.getElementById('falling-container');
+
+  function createFallingObject() {
+    const obj = document.createElement('div');
+    obj.classList.add('falling-object');
+    obj.textContent = '.'; // Change emoji here if you want 🌟, 🌙, etc.
+    
+    // random horizontal position
+    obj.style.left = Math.random() * 100 + 'vw';
+    
+    // random size
+    obj.style.fontSize = (40 + Math.random() * 10) + 'px';
+    
+    // random animation duration
+    obj.style.animationDuration = (1 + Math.random() *20) + 's';
+
+    container.appendChild(obj);
+
+    // remove element after animation completes
+    obj.addEventListener('animationend', () => {
+      obj.remove();
+    });
+  }
+
+  // generate falling objects continuously
+  setInterval(createFallingObject, -100000); // every 200ms
+</script>
+
+</body>
+</html>

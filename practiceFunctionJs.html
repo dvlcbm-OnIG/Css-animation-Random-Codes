@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function mdasCalculator(a, b, c, d){
+            let result = a * b / c + d;
+            return result;
+        }
+        function circle(r){
+            return Math.PI * Math.pow(r, 2);
+        }
+        function average(a, b, c, d){
+            return (a + b + c + d) / 4;
+        }
+
+        let choice = Number(prompt("1. Mdas Calculator\n2. Area of circle\n3. Average \n enter choice: "));
+
+        if (choice === 1 )
+       { let aa = Number(prompt("enter a: "));
+        let bb = Number(prompt("enter b: "));
+        let cc = Number(prompt("enter c: "));
+        let dd = Number(prompt("enter d: "));
+        console.log(mdasCalculator(aa, bb, cc, dd));}
+        else if (choice === 2){
+            let r = Number(prompt("enter radius: "))
+            console.log("Area of the circle is " + circle(r).toFixed(2));
+        }else if(choice === 3){
+            let a = Number(prompt("Pre-mid grade:"));
+            let b = Number(prompt("Mid term grade:"));
+            let c = Number(prompt("Pre-final grade:"));
+            let d = Number(prompt("Final grade:"));
+
+            let avgResult =  average(a,b,c,d);
+
+            console.log("Your average grade for this semester is " + average(a,b,c,d));
+            if(avgResult >=75){
+                console.log("Remarks: Passed!");
+            }else if(avgResult >=50){
+                console.log("Remarks: Failed!");
+            }
+            else{
+                console.log("Remarks: Dropped! GET OUT!!!!");
+            }
+            console.log(" >75 --> PASSED \n <75 --> FAILED \n <50 --> DROPPED");
+        }
+
+        
+               
+    </script>
+</body>
+</html>
