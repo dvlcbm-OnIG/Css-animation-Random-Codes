@@ -9,21 +9,21 @@
             background-color: darkslategrey;
             padding: 0;
             margin: 0;
-            height: 100vh;
+          
         }
         .container{
             background-color: rgb(44, 43, 43);
-            height: 200%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 10px;
-            padding: 30px;
+           
         }
         section{
             background-color: #463b3b;
-            height: 500px;
+           
             width: 500px;
             border: 1px solid black;
             display: flex;
@@ -41,8 +41,15 @@
             width: 100px;
             margin-top: 80px;
             box-shadow: white  0px 0px 10px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
     
             
+        }.inBox4{
+             background-color: #fff;
+             height: 80%;
+             width: 80%;
         }
     </style>
 </head>
@@ -65,9 +72,12 @@
             <input type="range" min="0" max="100" value="0" id="in3">
         </section>
         <section class="four">
-            <h1>Border Box Radius</h1>
-            <div class="box4"></div>
+        
+            <div class="box4">
+                <div class="inBox4"></div>
+            </div>
             <p id="label4">0% 0% 0% 0%</p>
+            <h3>Border Radius</h3>
             <label for="">top-left</label>
             <input type="range" min="0" max="100" value="0" id="in4">
             <label for="">top-right</label>
@@ -76,6 +86,20 @@
             <input type="range" min="0" max="100" value="0" id="in4.2">
             <label for="">bottom-left</label>
             <input type="range" min="0" max="100" value="0" id="in4.3">
+
+            <h3>Color</h3>
+            <input type="color" id="color">
+
+            <h3>Padding</h3>
+            <p>top</p>
+            <input type="range" id="paddingTop" min="0" max="100" value="0">
+            <p>right</p>
+            <input type="range" id="paddingRight" min="0" max="100" value="0">
+            <p>bottom</p>
+            <input type="range" id="paddingBottom" min="0" max="100" value="0">
+            <p>left</p>
+            <input type="range" id="paddingLeft" min="0" max="100" value="0">
+            
         </section>
     </div>
 
@@ -84,60 +108,86 @@
         let b2 = document.querySelector(".box2")
         let b3 = document.querySelector(".box3")
         let b4 = document.querySelector(".box4")
-let numInput = document.getElementById("numInput")
+        let inB4 = document.querySelector(".inBox4")
+        
         let in1 = document.getElementById("in1")
         let in2 = document.getElementById("in2")
         let in3 = document.getElementById("in3")
 
         let in4 = document.getElementById("in4")
-        let in4_1= document.getElementById("in4.1")
+        let in4_1 = document.getElementById("in4.1")
         let in4_2 = document.getElementById("in4.2")
         let in4_3 = document.getElementById("in4.3")
-
+        let color = document.getElementById("color")
+        
         let label1 = document.getElementById("label1")
         let label2 = document.getElementById("label2")
         let label3 = document.getElementById("label3")
-        let label4 = document.getElementById("label4")
-    
-    
-
-
-        in1.addEventListener("input", function(){
-            numInput.value = in1.value
-            b1.style.transform = `rotate(${in1.value}deg)`
-            label1.textContent = in1.value + "°"
-            
+        
+        in1.addEventListener("input", function() {
+            b1.style.borderRadius = in1.value + "%"
+            label1.textContent = in1.value + "%"
         })
-        numInput.addEventListener("input", function(){
-            in1.value = numInput.value
-            b1.style.transform = `rotate(${numInput.value}deg)`
-            label1.textContent = in1.value + "°"
-            
-        })
-        in2.addEventListener("input", function(){
-            b2.style.borderRadius = in2.value +"%"
+        
+        in2.addEventListener("input", function() {
+            b2.style.borderRadius = in2.value + "%"
             label2.textContent = in2.value + "%"
         })
-        in3.addEventListener("input", function(){
-            b3.style.borderRadius = in3.value +"%"
+        
+        in3.addEventListener("input", function() {
+            b3.style.borderRadius = in3.value + "%"
             label3.textContent = in3.value + "%"
         })
+        
+        in4.addEventListener("input", function() {
+            b4.style.borderTopLeftRadius = in4.value + "%"
+            inB4.style.borderTopLeftRadius = in4.value + "%"
+            //label4.textContent = in4.value + "%" + input4_1.value + "%" + input4_2.value + "%" + input4_3.value + "%"
+        })
+        
+        in4_1.addEventListener("input", function() {
+            b4.style.borderTopRightRadius = in4_1.value + "%"
+            inB4.style.borderTopRightRadius = in4_1.value + "%"
+        })
+        
+        in4_2.addEventListener("input", function() {
+            b4.style.borderBottomRightRadius = in4_2.value + "%"
+            inB4.style.borderBottomRightRadius = in4_2.value + "%"
+        })
+        
+        in4_3.addEventListener("input", function() {
+            b4.style.borderBottomLeftRadius = in4_3.value + "%"
+            inB4.style.borderBottomLeftRadius = in4_3.value + "%"
+        })
+        color.addEventListener("input", function(){
+            b4.style.backgroundColor = color.value
+        })
+
+        let paddingTop = document.getElementById("paddingTop")
+let paddingRight = document.getElementById("paddingRight")
+let paddingBottom = document.getElementById("paddingBottom")
+let paddingLeft = document.getElementById("paddingLeft")
+
+// Make inputs full width
 
 
-        function updateBorderRadius() {
-    b4.style.borderTopLeftRadius = in4.value + "%"
-    b4.style.borderTopRightRadius = in4_1.value + "%"
-    b4.style.borderBottomRightRadius = in4_2.value + "%"
-    b4.style.borderBottomLeftRadius = in4_3.value + "%"
+// Input listeners
+paddingTop.addEventListener("input", function() {
+    b4.style.paddingTop = paddingTop.value + "px"
+})
 
-    label4.textContent = `${in4.value}% ${in4_1.value}% ${in4_2.value}% ${in4_3.value}%`
-}
+paddingRight.addEventListener("input", function() {
+    b4.style.paddingRight = paddingRight.value + "px"
+})
 
-// Attach same function to all 4 inputs
-in4.addEventListener("input", updateBorderRadius)
-in4_1.addEventListener("input", updateBorderRadius)
-in4_2.addEventListener("input", updateBorderRadius)
-in4_3.addEventListener("input", updateBorderRadius)
-    </script>
+paddingBottom.addEventListener("input", function() {
+    b4.style.paddingBottom = paddingBottom.value + "px"
+})
+
+paddingLeft.addEventListener("input", function() {
+    b4.style.paddingLeft = paddingLeft.value + "px"
+})
+        </script>
+        
 </body>
 </html>
