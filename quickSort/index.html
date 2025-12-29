@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <p class="eyebrow">divide-and-conquer demo</p>
+            <h1>Quick Sort Playground</h1>
+            <p class="lede">Quick sort partitions and conquers—now rendered as a live histogram. Enter values, hit Start, and listen to each swap.</p>
+        </header>
+
+        <section class="controls card">
+            <div class="field">
+                <label for="numbers">Numbers (comma or space separated)</label>
+                <input id="numbers" type="text" value="3, 1, 4, 2" autocomplete="off">
+            </div>
+            <div class="field">
+                <label for="maxIterations">Max operations (failsafe)</label>
+                <input id="maxIterations" type="number" min="1" value="8000">
+            </div>
+            <div class="buttons">
+                <button id="startBtn">Start</button>
+                <button id="stopBtn" class="ghost" disabled>Stop</button>
+                <button id="resetBtn" class="ghost">Reset</button>
+            </div>
+            <p class="hint">Runs an in-place quick sort. Max operations caps the animation so it never locks up.</p>
+        </section>
+
+        <section class="status card">
+            <div class="stat">Operations <span id="iteration">0</span></div>
+            <div class="stat">Elapsed (ms) <span id="elapsed">0</span></div>
+            <div class="stat">Array length <span id="length">0</span></div>
+            <div class="stat">State <span id="state">Idle</span></div>
+            <div class="progress"><div class="bar" id="progressBar"></div></div>
+            <div class="badge" id="badge">Waiting…</div>
+        </section>
+
+        <section class="array card">
+            <h3 style="margin: 0 0 12px;">Current array</h3>
+            <div class="bars" id="arrayView"></div>
+        </section>
+
+        <section class="log card">
+            <h3 style="margin: 0 0 10px;">Event log</h3>
+            <div class="log-area" id="log"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
